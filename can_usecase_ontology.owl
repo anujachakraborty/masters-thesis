@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/CANUseCase#"
+     xml:base="http://example.org/CANUseCase"
+     xmlns:can="http://example.org/CANSimulationModelOntology#"
+     xmlns:ont="http://example.org/ontology#"
+     xmlns:css="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Ontology rdf:about="http://example.org/CANUseCase">
+        <owl:imports rdf:resource="http://example.org/CANSimulationModelOntology"/>
+		<owl:imports rdf:resource="http://example.org/ontology"/>
+    </owl:Ontology>
+
+    <!-- CAN_SimulationModel Instance -->
+    <owl:NamedIndividual rdf:about="http://example.org/CANUseCase#CanVehicleControlConfig">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+        <can:hasBitRate rdf:datatype="xsd:integer">100000</can:hasBitRate>
+        <can:hasBitStuffingMode rdf:datatype="xsd:string">None</can:hasBitStuffingMode>
+        <can:hasLogTransmissions rdf:datatype="xsd:boolean">true</can:hasLogTransmissions>
+        <ont:usesResource rdf:resource="http://example.org/CANUseCase#BrakeNode"/>
+        <ont:usesResource rdf:resource="http://example.org/CANUseCase#GatewayNode"/>
+		<ont:usesResource rdf:resource="http://example.org/CANUseCase#VehicleControllerNode"/>
+		<ont:describes rdf:resource="http://example.org/CANUseCase#EmergencyBraking"/>
+		<can:hasSettings rdf:resource="http://example.org/CANUseCase#EmergencyBrakingSettings"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#TxType"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#RxType3"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#TxType4"/> 
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#Fault1"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#RxType"/>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#CanSensorConfig">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+        <can:hasBitRate rdf:datatype="xsd:integer">100000</can:hasBitRate>
+        <can:hasBitStuffingMode rdf:datatype="xsd:string">None</can:hasBitStuffingMode>
+        <can:hasLogTransmissions rdf:datatype="xsd:boolean">false</can:hasLogTransmissions>
+        <ont:usesResource rdf:resource="http://example.org/CANUseCase#SensorRedundancyNode"/>
+        <ont:usesResource rdf:resource="http://example.org/CANUseCase#SensorMainNode"/>
+		<ont:usesResource rdf:resource="http://example.org/CANUseCase#GatewayNode"/>
+		<ont:usesResource rdf:resource="http://example.org/CANUseCase#DistanceEvaluatorNode"/>
+		<ont:describes rdf:resource="http://example.org/CANUseCase#EmergencyBraking"/>
+		<can:hasSettings rdf:resource="http://example.org/CANUseCase#EmergencyBrakingSettings"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#TxType3"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#RxType2"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#RxType1"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#TxType2"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#TxType1"/>
+		<ont:hasCapability rdf:resource="http://example.org/CANUseCase#Fault2"/>
+    </owl:NamedIndividual>
+
+    <!-- CAN_Node Instances -->
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#SensorRedundancyNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">sensor_redundancy_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">true</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#TxType1"/>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#Fault2"/>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#SensorMainNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">sensor_main_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">true</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#TxType2"/>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#GatewayNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">gateway_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">true</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#RxType1"/>
+		<ont:providesCapability rdf:resource="http://example.org/CANUseCase#TxType4"/>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#DistanceEvaluatorNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">distance_evaluator_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">true</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#TxType3"/>
+		<ont:providesCapability rdf:resource="http://example.org/CANUseCase#RxType2"/>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#VehicleControllerNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">vehicle_controller_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">true</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#TxType"/>
+		<ont:providesCapability rdf:resource="http://example.org/CANUseCase#RxType3"/>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#Fault1"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/CANUseCase#BrakeNode">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <can:hasName rdf:datatype="xsd:string">brake_node</can:hasName>
+        <can:hasDropDuplicatedFrames rdf:datatype="xsd:boolean">false</can:hasDropDuplicatedFrames>
+        <ont:providesCapability rdf:resource="http://example.org/CANUseCase#RxType"/>
+    </owl:NamedIndividual>
+
+    <!-- Capabilities -->
+    <owl:NamedIndividual rdf:about="http://example.org/CANUseCase#TxType">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">TX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:4</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">vehicle_controller_tx</can:hasPortName>
+		<can:communicatesWith rdf:resource="http://example.org/CANUseCase#RxType"/>
+		<rdfs:label xml:lang="en">Transmission of Vehicle Controller node</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#TxType1">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">TX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:3</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">sensor_redundancy_tx</can:hasPortName>
+		<can:communicatesWith rdf:resource="http://example.org/CANUseCase#RxType2"/>
+		 <rdfs:label xml:lang="en">Transmission of Sensor Redundancy node</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#TxType2">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">TX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:3</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">sensor_main_tx</can:hasPortName>
+		<can:communicatesWith rdf:resource="http://example.org/CANUseCase#RxType2"/>
+		<rdfs:label xml:lang="en">Transmission of Sensor Main node</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#TxType3">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">TX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:2</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">distance_evaluator_tx</can:hasPortName>
+		<can:communicatesWith rdf:resource="http://example.org/CANUseCase#RxType1"/>
+		<rdfs:label xml:lang="en">Transmission of Distance Evaluator node</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#TxType4">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">TX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:2</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">gateway_tx</can:hasPortName>
+		<can:communicatesWith rdf:resource="http://example.org/CANUseCase#RxType3"/>
+		<rdfs:label xml:lang="en">Transmission of Gateway node</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/CANUseCase#RxType">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">RX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:4</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">brake_rx</can:hasPortName>
+		<rdfs:label xml:lang="en">Reception of Brake node</rdfs:label>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#RxType1">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">RX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:2</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">gateway_rx</can:hasPortName>
+		 <rdfs:label xml:lang="en">Reception of Gateway node</rdfs:label>
+    </owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#RxType2">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">RX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:3</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">distance_evaluator_rx</can:hasPortName>
+		<rdfs:label xml:lang="en">Reception of Distance Evaluator node</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#RxType3">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+        <can:hasType rdf:datatype="xsd:string">RX</can:hasType>
+        <can:hasAddress rdf:datatype="xsd:string">fd:2</can:hasAddress>
+        <can:hasSimulatedPayloadSize rdf:datatype="xsd:integer">4</can:hasSimulatedPayloadSize>
+        <can:hasPortName rdf:datatype="xsd:string">vehicle_controller_rx</can:hasPortName>
+		<rdfs:label xml:lang="en">Reception of Vehicle Controller node</rdfs:label>
+    </owl:NamedIndividual>
+	
+    <!-- Fault Injection -->
+	
+    <owl:NamedIndividual rdf:about="http://example.org/CANUseCase#Fault1">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+        <can:hasErrorModel rdf:datatype="xsd:string">SenderLinkFailure</can:hasErrorModel>
+        <can:hasErrorProcessor rdf:datatype="xsd:string">DropFrame</can:hasErrorProcessor>
+        <can:hasStartTimeMillis rdf:datatype="xsd:integer">300</can:hasStartTimeMillis>
+        <can:hasEndTimeMillis rdf:datatype="xsd:integer">600</can:hasEndTimeMillis>
+		<rdfs:label xml:lang="en">Drop Frame Fault</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#Fault2">
+        <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+        <can:hasErrorModel rdf:datatype="xsd:string">SenderLinkFailure</can:hasErrorModel>
+        <can:hasErrorProcessor rdf:datatype="xsd:string">ChangeSignDouble</can:hasErrorProcessor>
+        <can:hasStartTimeMillis rdf:datatype="xsd:integer">11000</can:hasStartTimeMillis>
+        <can:hasEndTimeMillis rdf:datatype="xsd:integer">12000</can:hasEndTimeMillis>
+		<rdfs:label xml:lang="en">Change Sign Fault</rdfs:label>
+    </owl:NamedIndividual>
+	
+	<!-- Simulation Scenario -->
+	
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#EmergencyBraking">
+	 <rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#AutomatedEmergencyBrake"/>
+	 <!-- <rdf:type rdf:resource="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#Simulation"/>-->
+	 <rdfs:label xml:lang="en">Emergency Braking scenario</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<!-- Simulation Settings -->
+
+	<owl:NamedIndividual rdf:about="http://example.org/CANUseCase#EmergencyBrakingSettings">
+		<rdf:type rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+		<can:hasSpeedMetersPerSecond rdf:datatype="xsd:float">15.0</can:hasSpeedMetersPerSecond>
+		<can:hasStartingDistanceMeters rdf:datatype="xsd:float">200.0</can:hasStartingDistanceMeters>
+		<can:hasSensorTimeStepNs rdf:datatype="xsd:integer">10000000</can:hasSensorTimeStepNs>
+		<can:hasMinimumBrakingDistance rdf:datatype="xsd:float">30.16</can:hasMinimumBrakingDistance>
+		<can:hasSimulationDuration rdf:datatype="xsd:float">13.33</can:hasSimulationDuration>
+		<can:hasBrakingDuration rdf:datatype="xsd:float">2.01</can:hasBrakingDuration>
+	</owl:NamedIndividual>
+
+
+	
+</rdf:RDF>

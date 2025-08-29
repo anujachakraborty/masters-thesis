@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/CANSimulationModelOntology#"
+     xml:base="http://example.org/CANSimulationModelOntology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:bfo="http://purl.obolibrary.org/obo/bfo#"
+     xmlns:css="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#"
+     xmlns:iso="http://www.example.org/iso25010#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:ont="http://example.org/ontology#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vdi="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#"
+	 xmlns:idta="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://example.org/CANSimulationModelOntology">
+        <owl:imports rdf:resource="http://example.org/ontology"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Ontology>
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+    <!-- http://example.org/CANSimulationModelOntology#CAN_SimulationModel -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#CAN_SimulationModel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+    <rdfs:comment xml:lang="en">Simulation model for CAN network communication, supporting multi-node setups with message creation,Arbitration, fault injection, message frame transmission.</rdfs:comment>
+	</owl:Class> 
+
+	<!-- Resources -->
+
+    <!-- http://example.org/CANSimulationModelOntology#CAN_Node -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#CAN_Node">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+		<rdfs:comment xml:lang="en">Nodes are the individual devices or electronic control units (ECUs) connected to the CAN bus. Each node can both transmit and receive messages on the bus. In automotive applications, nodes can include components such as engine control units, airbag systems, anti-lock braking systems, instrument clusters, and more. Industrial applications may have nodes such as sensors, actuators, programmable logic controllers (PLCs), and human-machine interfaces (HMIs).</rdfs:comment>
+    </owl:Class>
+    
+	<!-- http://example.org/CANSimulationModelOntology#CAN_Port -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#CAN_Port">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+		<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#portsConnector"/>
+		<rdfs:comment xml:lang="en">Ports are for connecting several applications to the same network interface that can transmit and receive value events to and from the ApplicationInterface instance.</rdfs:comment>
+	
+    </owl:Class>
+
+    
+	<!-- Capabilities -->
+
+    <!-- http://example.org/CANSimulationModelOntology#FaultInjection -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#FaultInjection">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+		<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#simPurpose"/>
+		<rdfs:comment xml:lang="en">CAN incorporates robust error detection and handling mechanisms through bitwise arbitration, cyclic redundancy check.</rdfs:comment>
+    </owl:Class>
+    
+
+    <!-- http://example.org/CANSimulationModelOntology#LatencyMeasurement -->
+
+    <!--<owl:Class rdf:about="http://example.org/CANSimulationModelOntology#LatencyMeasurement">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+    </owl:Class>-->
+    
+
+
+    <!-- http://example.org/CANSimulationModelOntology#MessageFrameTransmission -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#MessageFrameTransmission">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+		<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#simPurpose"/>
+		<rdfs:comment xml:lang="en">Communication on a CAN bus is message-oriented. Each message consists of an identifier representing the message’s priority, content, and data payload. Messages are broadcast to all nodes on the bus, but only the intended recipient processes them based on the identifier.</rdfs:comment>
+    </owl:Class>
+    
+	<!-- http://example.org/CANSimulationModelOntology#SimulationSettings -->
+	
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#SimulationSettings">
+		<rdfs:comment>Configuration parameters controlling simulation behavior and physical constraints.</rdfs:comment>
+	</owl:Class>
+
+
+    <!-- http://example.org/CANSimulationModelOntology#MessageTransmission -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#MessageTransmission">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Process"/>
+		<rdfs:comment xml:lang="en"> Models the timing and behavior of CAN frame transmission on the bus.The data transmission process begins when a node (sender) creates a message to be transmitted onto the CAN bus. This message typically contains information about the data to be communicated, along with an identifier that determines its priority.</rdfs:comment>
+    </owl:Class>
+	
+	<!-- http://example.org/CANSimulationModelOntology#AutomatedEmergencyBrake -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#AutomatedEmergencyBrake">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#Simulation"/>
+		<rdfs:comment xml:lang="en"> Initiating Simulation for Automated Emergency Braking for the CanBus.</rdfs:comment>
+    </owl:Class>
+    
+
+    <!-- http://example.org/CANSimulationModelOntology#MessagePrioritization -->
+
+    <!-- <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#MessagePrioritization">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#FunctionalSuitability"/>
+    </owl:Class>-->
+    
+
+
+    <!-- http://example.org/CANSimulationModelOntology#Reliability -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#Reliability">
+    <owl:equivalentClass rdf:resource="http://www.example.org/iso25010#Reliability"/>
+	</owl:Class>
+
+
+    <!-- http://example.org/CANSimulationModelOntology#TransmissionEfficiency -->
+
+    <owl:Class rdf:about="http://example.org/CANSimulationModelOntology#TransmissionEfficiency">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#PerformanceEfficiency"/>
+    </owl:Class>
+    
+	<!-- Object Properties -->
+	
+	<!-- http://example.org/CANSimulationModelOntology#hasPort-->
+	
+    <owl:ObjectProperty rdf:about="http://example.org/CANSimulationModelOntology#hasPort">
+        <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+        <rdfs:range rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Port"/>
+        <rdfs:comment xml:lang="en">A can node will have port for incoming and outgoing message frames.</rdfs:comment>
+       
+    </owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="http://example.org/CANSimulationModelOntology#hasSettings">
+        <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+        <rdfs:range rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+        <rdfs:comment xml:lang="en">Can simulation model will need the required simulation settings for conducting the simulation.</rdfs:comment>
+       
+    </owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="http://example.org/CANSimulationModelOntology#communicatesWith">
+		<rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+		<rdfs:range rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+		<rdfs:comment xml:lang="en">Links a TX message frame to the corresponding RX frame indicating communication between sender and receiver.</rdfs:comment>
+	</owl:ObjectProperty>
+
+	
+	<rdf:Description rdf:about="http://example.org/CANSimulationModelOntology#CAN_SimulationModel">
+	  <ont:usesResource rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://example.org/CANSimulationModelOntology#CAN_SimulationModel">
+	  <ont:describes rdf:resource="http://example.org/CANSimulationModelOntology#AutomatedEmergencyBrake"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://example.org/CANSimulationModelOntology#CAN_SimulationModel">
+	  <ont:hasCapability rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+	  <ont:hasCapability rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://example.org/CANSimulationModelOntology#CAN_Node">
+	  <ont:providesCapability rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+	  <ont:providesCapability rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+	</rdf:Description>
+
+
+	<!-- DataType Properties -->
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasBitRate">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasBitStuffingMode">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasLogTransmissions">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_SimulationModel"/>
+    <rdfs:range rdf:resource="xsd:boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasName">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasDropDuplicatedFrames">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#CAN_Node"/>
+    <rdfs:range rdf:resource="xsd:boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasStartTimeMillis">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasEndTimeMillis">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasErrorModel">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasErrorProcessor">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#FaultInjection"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasAddress">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasPortName">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasSimulatedPayloadSize">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasType">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#MessageFrameTransmission"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasSpeedMetersPerSecond">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasStartingDistanceMeters">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasSensorTimeStepNs">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasMinimumBrakingDistance">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasSimulationDuration">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/CANSimulationModelOntology#hasBrakingDuration">
+    <rdfs:domain rdf:resource="http://example.org/CANSimulationModelOntology#SimulationSettings"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->

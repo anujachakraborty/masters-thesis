@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:bfo="http://purl.obolibrary.org/obo/bfo#"
+     xmlns:css="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:idta="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:vdi3633="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#"
+     xmlns:iso25010="http://www.example.org/iso25010#">
+    <owl:Ontology rdf:about="http://example.org/ontology">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5"/>
+        <owl:imports rdf:resource="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology.owl"/>
+        <owl:imports rdf:resource="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/ontology#hasQualityAttribute -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasQualityAttribute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+        <rdfs:range rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:comment xml:lang="en">Relates a simulation model to its quality attributes, such as reliability or performance.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology#describes -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#describes">
+		<rdfs:domain rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#Simulation"/>
+        <rdfs:comment xml:lang="en">A simulation model provides metadata about a specific simulation.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+	<!-- http://example.org/ontology#usesResource -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#usesResource">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+        <rdfs:comment xml:lang="en">A simulation model requires a resource for execution.</rdfs:comment>
+        
+    </owl:ObjectProperty>
+	
+	
+	<!-- http://example.org/ontology#hasCapability -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasCapability">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+        <rdfs:comment xml:lang="en">A simulation model possesses specific capabilities.</rdfs:comment>
+       
+    </owl:ObjectProperty>
+	
+	
+	<!-- http://example.org/ontology#executesProcess -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#executesProcess">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/css#Process"/>
+        <rdfs:comment xml:lang="en">A simulation model executes a process.</rdfs:comment>
+        
+    </owl:ObjectProperty>
+	
+	
+	<!-- https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#providesCapability -->
+	
+    <!--<rdf:Description rdf:about="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#providesCapability">
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#Resource"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#Capability"/>
+       
+    </rdf:Description>-->
+
+	<!-- http://www.w3id.org/hsu-aut/css#providesCapability -->
+
+    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/css#providesCapability">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+    </rdf:Description>
+	
+	<!-- http://www.w3id.org/hsu-aut/css#requiresCapability -->
+
+    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/css#requiresCapability">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/css#Process"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+    </rdf:Description>
+
+    <!-- https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#requiresCapability -->
+	
+    <!--<rdf:Description rdf:about="http://example.org/ontology#requiresCapability">
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#Process"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#Capability"/>
+        
+    </rdf:Description> -->
+	
+	
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo#Object -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo#Object">
+	<rdfs:comment xml:lang="en">An object is a material entity which manifests causal unity &amp; is of a type instances of which are maximal relative to the sort of causal unity manifested such as An organism; a fish tank; a planet; a laptop; a valve; a block of marble; an ice cube [BFO]</rdfs:comment>
+	</rdf:Description>
+
+    <!-- http://purl.obolibrary.org/obo/bfo#Process -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo#Process">
+	<rdfs:comment xml:lang="en">p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant such as An act of selling; the life of an organism; a process of sleeping; a process of cell-division; a beating of the heart; a process of meiosis; the taxiing of an aircraft; the programming of a computer [BFO]</rdfs:comment>
+	</rdf:Description>
+
+	
+	
+	<!-- http://purl.obolibrary.org/obo/bfo#Function -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo#Function">
+	<rdfs:comment xml:lang="en"> A function is a disposition that exists in virtue of its bearer&apos;s physical make-up &amp; this physical make-up is something the bearer possesses because it came into being either through evolution (in the case of natural biological entities) or through intentional design (in the case of artefacts) in order to realize processes of a certain sort such as The function of a hammer to drive in nails; the function of a heart pacemaker to regulate the beating of a heart through electricity [BFO]</rdfs:comment>
+	</rdf:Description>
+	
+	<!-- http://purl.obolibrary.org/obo/bfo#Quality -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo#Quality">
+	<rdfs:comment xml:lang="en">A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized such as The colour of a tomato; the ambient temperature of this portion of air; the length of the circumference of your waist; the shape of your nose; the shape of your nostril; the mass of this piece of gold. [BFO]
+	</rdfs:comment>
+	</rdf:Description>
+	
+    
+	<!-- http://www.w3id.org/hsu-aut/css#Capability -->
+
+    
+	<rdf:Description rdf:about="http://www.w3id.org/hsu-aut/css#Capability">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Function"/>
+    </rdf:Description>
+	
+	<!-- http://www.w3id.org/hsu-aut/css#Resource -->
+
+    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/css#Resource">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Object"/>
+    </rdf:Description>
+	
+	<!-- http://www.w3id.org/hsu-aut/css#Process -->
+
+   <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/css#Process">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Process"/>
+    </rdf:Description>
+	
+
+    <!-- http://www.example.org/iso25010#QualityAttribute -->
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#QualityAttribute">
+     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Quality"/>
+	 <rdfs:comment xml:lang="en">Quality characteristics and subcharacteristics of the product quality model [ISO25010]</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Object"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#Simulation -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/reif/ontologies/VDI3633#Simulation">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/bfo#Process"/>
+		<rdfs:comment xml:lang="en">Simulation as the representation of a system with its dynamic processes in an experimentable model with the aim of reaching findings which are transferable to reality [VDI3633]</rdfs:comment>
+    </rdf:Description>
+    
+	    <!-- Subclasses of QualityAttribute -->
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#FunctionalSuitability">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Functional Suitability</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to provide functions that meet stated and implied needs of intended users when it is used under specified conditions.
+		Note 1 to entry: Functional suitability is concerned with whether the functions meet not only stated and implied needs, but also the functional specification [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Reliability">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Reliability</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to perform specified functions under specified conditions for a specified period of time without interruptions and failures
+		Note 1 to entry: Wear does not occur in software. Limitations in reliability are due to results from faults in
+		requirements, design and implementation, or from contextual changes.
+		Note 2 to entry: Dependability is often used as a synonym for reliability. However, dependability has a larger
+		scope in that it includes security (3.6), performance efficiency (3.2), and continuing support and others in addition
+		to the subcharacteristics of reliability. [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Usability">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Interaction Capability</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to be interacted with by specified users to exchange information between a user and a system via the user interface to complete the intended task
+		Note 1 to entry: Interaction capability in the product quality model and its subcharacteristics focus on a set of
+		attributes that enable interaction by users (or operators) to complete specific tasks in a variety of contexts of use.
+		On the other hand, usability as defined in the quality-in-use model (ISO/IEC 25019) comprehensively focuses on
+		outcomes of use to determine whether tasks are achieved by users with effectiveness, efficiency and satisfaction
+		in a specific context of use.
+		Note 2 to entry: Interaction capability is a prerequisite for usability [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#PerformanceEfficiency">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Performance Efficiency</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to perform its functions within specified time and throughput parameters and be efficient in the use of resources under specified conditions.
+		Note 1 to entry: Resources can be CPU, memory, storage, and network devices.
+		Note 2 to entry: Resources can include other software products, the software and hardware configuration of the
+		system, energy, and materials (e.g. print paper, storage media). [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Maintainability">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Maintainability</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to be modified by the intended maintainers with effectiveness and efficiency
+		Note 1 to entry: Modifications can include corrections, improvements or adaptation of the product to changes in environment, and in requirements and functional specifications. Modifications include those carried out by specialized support staff, and those carried out by business or operational staff, or end users.
+		Note 2 to entry: Maintainability includes installation of updates and upgrades.
+		Note 3 to entry: Maintainability can be interpreted as either an inherent capability of the product to facilitate maintenance activities, or the quality-in-use experienced by the maintainers for the goal of maintaining the product. [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Portability">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Flexibility</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to be adapted to changes in its requirements, contexts of use, or system environment
+		Note 1 to entry: Flexibility to context of use should consider two distinguished aspects, i.e. technical and
+		non-technical. The technical aspect is related with the execution environment of products, such as software,
+		hardware and communication facility; and the non-technical aspect is related with the social environment, such
+		as user and task, and the physical environment, such as climate and nature. [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Security">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Security</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to protect information and data so that persons or other products have the degree of data access appropriate to their types and levels of authorization, and to defend against attackpatterns by malicious actors
+		Note 1 to entry: As well as data stored in or by a product or system, security also applies to data in transmission. [ISO25010]
+		</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/iso25010#Compatibility">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#QualityAttribute"/>
+        <rdfs:label xml:lang="en">Compatibility</rdfs:label>
+		<rdfs:comment xml:lang="en">capability of a product to exchange information with other products, and/or to perform its required functions while sharing the same common environment and resources. [ISO25010]</rdfs:comment>
+    </owl:Class>
+
+
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
