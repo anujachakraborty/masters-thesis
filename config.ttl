@@ -1,0 +1,64 @@
+# Licensed under the terms of http://www.apache.org/licenses/LICENSE-2.0
+
+## Fuseki Server configuration file.
+
+@prefix :        <#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+	
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     <#memory>
+	 
+   ) .
+   
+# Service description for "/dataset" with all endpoints.
+<#memory> rdf:type fuseki:Service ;
+    fuseki:name "memory" ;
+    
+	fuseki:endpoint  [ fuseki:operation  fuseki:update ];
+	fuseki:endpoint  [ fuseki:name       "update";
+					   fuseki:operation  fuseki:update
+					 ];
+	fuseki:endpoint  [ fuseki:operation  fuseki:gsp-rw ];
+	fuseki:endpoint  [ fuseki:name       "data";
+					   fuseki:operation  fuseki:gsp-rw
+					 ];
+	fuseki:endpoint  [ fuseki:operation  fuseki:query ];
+	fuseki:endpoint  [ fuseki:name       "query";
+					   fuseki:operation  fuseki:query
+					 ];
+	fuseki:endpoint  [ fuseki:name       "get";
+					   fuseki:operation  fuseki:gsp-r
+					 ];
+	fuseki:endpoint  [ fuseki:name       "sparql";
+					   fuseki:operation  fuseki:query
+					 ];
+    fuseki:dataset :secondtry ;
+	
+    .
+
+# Dataset with only the default graph.
+:secondtry rdf:type       ja:RDFDataset ;
+    ja:defaultGraph     :model_inf ;
+     .
+
+# The inference model
+:model_inf rdfs:label "Inf-1" ;
+	rdf:type ja:InfModel ;
+    ja:baseModel [
+        rdf:type ja:MemoryModel
+    ] ;
+     
+     ja:reasoner [
+         ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
+         # For RDFS: use this instead:
+         ## ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>
+     ] .
+	
+
+     
+     
+
