@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/EthernetSimulationModelOntology#"
+     xml:base="http://example.org/EthernetSimulationModelOntology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:bfo="http://purl.obolibrary.org/obo/bfo#"
+     xmlns:css="https://raw.githubusercontent.com/CaSkade-Automation/CSS/main/CSS-Ontology#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+	 xmlns:ont="http://example.org/ontology#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:idta="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:vdi3633="https://raw.githubusercontent.com/JonathanReif/SiS/main/Resources/VDI3633#"
+     xmlns:iso25010="http://www.example.org/iso25010#">
+    
+    <owl:Ontology rdf:about="http://example.org/EthernetSimulationModelOntology">
+         <owl:imports rdf:resource="http://example.org/ontology"/>
+    </owl:Ontology>
+
+ <!-- Ethernet Simulation Model -->
+ 
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_SimulationModel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#SimulationModel"/>
+    <rdfs:comment xml:lang="en">Simulation model for Ethernet communication.</rdfs:comment>
+</owl:Class>
+
+ <!-- Capabilities -->
+ 
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#StoreAndForwardCommunication">
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+	<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#simPurpose"/>
+	<rdfs:comment xml:lang="en">Simulation of switched Ethernet networks for store-and-forward communication.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#MulticastCommunication">
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Capability"/>
+	<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#simPurpose"/>
+	<rdfs:comment xml:lang="en">Simulation of unswitched Ethernet networks for multicast communication.</rdfs:comment>
+</owl:Class>
+
+  <!-- Resources -->
+  
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_Node">
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+	<rdfs:comment xml:lang="en">Nodes are the individual devices connected to the Ethernet network. Each node can both transmit and receive messages on the network. </rdfs:comment>
+</owl:Class>
+
+
+
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_Port">
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Resource"/>
+	<owl:equivalentClass rdf:resource="http://www.semanticweb.org/eklaspad/ontologies/2022/6/untitled-ontology-5#portsConnector"/>
+	<rdfs:comment xml:lang="en">Ports are for connecting several applications to the same network interface that can transmit and receive value events to and from the ApplicationInterface instance.</rdfs:comment>
+</owl:Class>
+
+ <!-- Processes -->
+ 
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_PacketTransmission">
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/css#Process"/>
+	<rdfs:comment xml:lang="en">Models packet transmission over Ethernet medium (switched/unswitched). </rdfs:comment>
+</owl:Class>
+
+ <!-- Quality Attributes -->
+ 
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Efficiency">
+    <rdfs:subClassOf rdf:resource="http://www.example.org/iso25010#PerformanceEfficiency"/>
+</owl:Class>
+
+
+<owl:Class rdf:about="http://example.org/EthernetSimulationModelOntology#Reliability">
+   <owl:equivalentClass rdf:resource="http://www.example.org/iso25010#Reliability"/>
+</owl:Class>
+
+<!-- Object Properties -->
+
+	<rdf:Description rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_SimulationModel">
+	  <ont:usesResource rdf:resource="http://example.org/EthernetSimulationModelOntology#Ethernet_Node"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://example.org/EthernetSimulationModelOntology#Ethernet_SimulationModel">
+	  <ont:hasCapability rdf:resource="http://example.org/EthernetSimulationModelOntology#StoreAndForwardCommunication"/>
+	  <ont:hasCapability rdf:resource="http://example.org/EthernetSimulationModelOntology#MulticastCommunication"/>
+	  
+	</rdf:Description>
+
+<!-- DataType Properties -->
+
+<owl:DatatypeProperty rdf:about="http://example.org/EthernetSimulationModelOntology#hasPayloadSize">
+    <rdfs:domain rdf:resource="http://example.org/EthernetSimulationModelOntology#Ethernet_Port"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/EthernetSimulationModelOntology#hasMACAddress">
+    <rdfs:domain rdf:resource="http://example.org/EthernetSimulationModelOntology#Ethernet_Port"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://example.org/EthernetSimulationModelOntology#hasBitRate">
+    <rdfs:domain rdf:resource="http://example.org/EthernetSimulationModelOntology#Ethernet_SimulationModel"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+
+<owl:DatatypeProperty rdf:about="http://example.org/EthernetSimulationModelOntology#hasLogTransmissions">
+    <rdfs:domain rdf:resource="http://example.org/EthernetSimulationModelOntology#Ethernet_SimulationModel"/>
+    <rdfs:range rdf:resource="xsd:boolean"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
